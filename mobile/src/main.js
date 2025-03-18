@@ -40,32 +40,33 @@ app.component('Input', Input)
 
 app.provide("employee_id",employee)
 
+app.mount('#app')
 
-const registerServiceWorker = async () => {
+// const registerServiceWorker = async () => {
 
-	if ("serviceWorker" in navigator) {
-		// let serviceWorkerURL = "/public/sw.js"
-		let serviceWorkerURL = "/assets/projectit/projectit/sw.js"
-		let config = ""
+// 	if ("serviceWorker" in navigator) {
+// 		// let serviceWorkerURL = "/public/sw.js"
+// 		let serviceWorkerURL = "/assets/projectit/projectit/sw.js"
+// 		let config = ""
 
-		navigator.serviceWorker
-			.register(serviceWorkerURL, {
-				type: "classic",
-			})
-			.then((registration) => {
-				if (config) {
-          console.log("Service Worker Initialised")
-				}
-			})
-			.catch((err) => {
-				console.error("Failed to register service worker", err)
-			})
-	} else {
-		console.error("Service worker not enabled/supported by the browser")
-	}
-}
+// 		navigator.serviceWorker
+// 			.register(serviceWorkerURL, {
+// 				type: "classic",
+// 			})
+// 			.then((registration) => {
+// 				if (config) {
+//           console.log("Service Worker Initialised")
+// 				}
+// 			})
+// 			.catch((err) => {
+// 				console.error("Failed to register service worker", err)
+// 			})
+// 	} else {
+// 		console.error("Service worker not enabled/supported by the browser")
+// 	}
+// }
 
-router.isReady().then(async () => {
-  registerServiceWorker()
-  app.mount('#app')
-})
+// router.isReady().then(async () => {
+//   registerServiceWorker()
+//   app.mount('#app')
+// })
