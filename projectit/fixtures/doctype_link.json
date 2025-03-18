@@ -1,0 +1,19 @@
+[
+ {
+  "custom": 1,
+  "docstatus": 0,
+  "doctype": "DocType Link",
+  "group": null,
+  "hidden": 0,
+  "is_child_table": 0,
+  "link_doctype": "Employee Checkin",
+  "link_fieldname": "custom_timesheet",
+  "modified": "2025-03-17 15:47:37.374701",
+  "name": "v8sdmt8hqv",
+  "parent": "Timesheet",
+  "parent_doctype": null,
+  "parentfield": "links",
+  "parenttype": "Customize Form",
+  "table_fieldname": null
+ }
+]
