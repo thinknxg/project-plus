@@ -75,17 +75,17 @@
 //         });
 // }
 
-self.addEventListener('install', event => {
-    event.waitUntil(
-      caches.open('static-v1') // Create a cache named 'static-v1'
-        .then(cache => {
-          return cache.addAll([
-            '/', // Cache the index.html
-            '/index.html', // Cache the index.html
-            // '/styles.css', // Cache your CSS
-            // '/script.js', // Cache your JavaScript
-            // '/images/logo.png' // Cache your images
-          ]);
-        })
-    );
-  });
+// self.addEventListener('install', event => {
+//     event.waitUntil(
+//       caches.open('static-v1') // Create a cache named 'static-v1'
+//         .then(cache => {
+//           return cache.addAll([
+//             '/', // Cache the index.html
+//             '/index.html', // Cache the index.html
+//             // '/styles.css', // Cache your CSS
+//             // '/script.js', // Cache your JavaScript
+//             // '/images/logo.png' // Cache your images
+//           ]);
+//         })
+//     );
+//   });
