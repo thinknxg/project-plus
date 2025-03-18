@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/assets/projectit/mobile/ && yarn copy-html-entry && yarn copy-icon",
+    "build": "vite build --base=/assets/projectit/projectit/ && yarn copy-html-entry && yarn copy-icon",
     "preview": "vite preview",
-    "copy-html-entry": "cp ../projectit/public/mobile/index.html ../projectit/www/projectit.html",
+    "copy-html-entry": "cp ../projectit/public/projectit/index.html ../projectit/www/projectit.html",
     "copy-icon": "cp -r ../mobile/src/images/ ../projectit/public/projectit/images/"
   },
   "dependencies": {
