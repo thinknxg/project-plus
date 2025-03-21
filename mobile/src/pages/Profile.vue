@@ -10,7 +10,8 @@
                 <div class="flex flex-col items-center gap-3">
                     <div class="circular-image-container">
                         <div v-if="cookies.get('user_image')">
-                            <img :src="cookies.get('user_image')" class="circular-image" />
+                            <img :src="cookies.get('user_image')" class="circular-image"
+                                :alt="cookies.get('full_name')" />
                         </div>
                         <div v-else class="flex items-center justify-center bg-gray-300 h-full w-full">
                             <p class="text-gray-700 text-[75px]">{{ cookies.get('full_name')[0] }}</p>
@@ -35,12 +36,12 @@
                     </div>
                 </div>
                 <div class=" flex flex-col gap-3">
-                    <button @click="logout">
-                        <div class="flex gap-3 bg-[#B9C8EA] pt-2 pb-2 w-56 justify-center rounded-lg">
+                    <Button @click="logout" :loading="session.logout.loading" variant="ghost">
+                        <div class="flex gap-3 bg-[#a3b6e0] pt-2 pb-2 w-56 justify-center items-center rounded-lg">
                             <p> Logout </p>
                             <FeatherIcon name="log-out" class="w-6 h-6 text-red-800" />
                         </div>
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>
@@ -62,9 +63,9 @@ const cookies = new URLSearchParams(document.cookie.split('; ').join('&'))
 
 const emit = defineEmits(['close'])
 
-function logout(){
-    session.logout.submit()
-    emit('close',false);
+async function logout() {
+    await session.logout.submit()
+    emit('close', false);
 }
 
 // window.addEventListener('click', function(e){   
