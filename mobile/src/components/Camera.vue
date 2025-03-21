@@ -1,14 +1,13 @@
 <template>
     <div class="flex items-center flex-col">
-        <img id="preview-image" class="rounded-lg drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]" />
+        <img id="preview-image" class="w-screen h-screen" v-show="showPreview"/>
     </div>
     <div v-if="!showPreview">
-        <div class="flex justify-center">
+        <!-- <div class="flex justify-center"> -->
             <video ref="video" autoplay muted hidden playsinline webkit-playsinline></video>
-            <canvas ref="canvas" width="350" height="500"
-                class="rounded-lg drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]"></canvas>
-        </div>
-        <div class="pt-7 flex justify-evenly items-center">
+            <canvas ref="canvas" class="w-screen h-screen"></canvas>
+        <!-- </div> -->
+        <div class="fixed bottom-12 w-full flex items-center justify-between pl-10 pr-10">
             <div>
                 <button @click="swapCamera">
                     <div>
@@ -24,7 +23,7 @@
             <div></div>
         </div>
     </div>
-    <div v-else class="flex items-center flex-col pt-7">
+    <div v-else class="flex items-center flex-col pt-7 fixed bottom-12 w-full">
         <PrimaryButton  @click="endCamera" :name="props.mode"> </PrimaryButton>
     </div>
 </template>
@@ -68,7 +67,7 @@ onBeforeUnmount(() => {
 })
 
 function Draw() {
-    ctx.value.drawImage(video.value, 0, 0)
+    ctx.value.drawImage(video.value, 0, 0,window.innerWidth,window.innerHeight)
     requestAnimationFrame(Draw)
 }
 
@@ -122,3 +121,6 @@ function getCamera() {
 }
 
 </script>
+<style scoped>
+
+</style>

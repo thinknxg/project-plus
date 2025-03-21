@@ -20,7 +20,7 @@ const routes = [
     component : () => import('@/pages/ManageIT.vue'),
   },
   {
-    path : '/projectit/edit-instructions/:project_name',
+    path : '/manageit/edit-instructions/:project_name',
     name : 'EditInstructions',
     component : () => import('@/pages/EditInstructions.vue'),
   },

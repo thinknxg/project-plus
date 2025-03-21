@@ -36,10 +36,10 @@
                 </div>
             </div>
         </div>
-        <div v-if="showCamera" class=" pt-7">
+        <!-- <div v-if="showCamera" class=" pt-7">
             <Camera :mode="cameraMode" @capture-event="handleImageCapture($event)" @close-event="showCamera = false">
             </Camera>
-        </div>
+        </div> -->
     </div>
 
     <div v-if="showError">
@@ -47,7 +47,7 @@
     </div>
 </template>
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, onMounted, watch } from 'vue';
 import { createResource, createListResource, toast, FeatherIcon, Spinner } from 'frappe-ui';
 import { FileAttachment } from '../composables';
 import ErrorMessage from '../components/ErrorMessage.vue';
@@ -60,7 +60,13 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import Instructions from './Instructions.vue';
 import { get_instructions } from '../data/work_instructions';
 import TeamMembers from './TeamMembers.vue';
+import { showCamera, cameraMode, imageFile } from '../data/camera_context';
 
+watch(imageFile,() =>{
+    handleImageCapture(imageFile.value)
+    console.log(imageFile.value)
+}
+)
 dayjs.extend(customParseFormat);
 
 onMounted(async function () {
@@ -85,8 +91,7 @@ const timesheetDetails = ref({})
 const customer = ref('')
 const projectId = ref('')
 const actionName = ref('Check-In')
-const cameraMode = ref('Check-In')
-const showCamera = ref(false)
+cameraMode.value = 'Check-In'
 
 const isProjectAllocated = ref(true)
 const checkInImage = ref([])
@@ -284,11 +289,11 @@ async function uploadAllAttachments(documentType, documentName, attachments) {
 async function handleImageCapture(file) {
     uploading.value = true
     if (cameraMode.value === 'Check-In') {
-        checkInImage.value = [file]
+        checkInImage.value = [imageFile.value]
         checkIn()
     }
     else {
-        await uploadAllAttachments("Timesheet", timesheetDetails.value.name, [file])
+        await uploadAllAttachments("Timesheet", timesheetDetails.value.name, [imageFile.value])
         if (cameraMode.value === "Upload") {
             additionalImage()
 
@@ -297,6 +302,7 @@ async function handleImageCapture(file) {
             checkOut()
         }
     }
+    console.log(imageFile.value, "Helo")
 }
 
 const workTimings = createResource({
