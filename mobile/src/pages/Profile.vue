@@ -10,7 +10,8 @@
                 <div class="flex flex-col items-center gap-3">
                     <div class="circular-image-container">
                         <div v-if="cookies.get('user_image')">
-                            <img :src="cookies.get('user_image')" class="circular-image" :alt="cookies.get('full_name')" />
+                            <img :src="cookies.get('user_image')" class="circular-image"
+                                :alt="cookies.get('full_name')" />
                         </div>
                         <div v-else class="flex items-center justify-center bg-gray-300 h-full w-full">
                             <p class="text-gray-700 text-[75px]">{{ cookies.get('full_name')[0] }}</p>
@@ -44,7 +45,7 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </template>
 <script setup>
 import { userResource } from '../data/user'
@@ -62,9 +63,9 @@ const cookies = new URLSearchParams(document.cookie.split('; ').join('&'))
 
 const emit = defineEmits(['close'])
 
-async function logout(){
+async function logout() {
     await session.logout.submit()
-    emit('close',false);
+    emit('close', false);
 }
 
 // window.addEventListener('click', function(e){   
