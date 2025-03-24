@@ -1,12 +1,15 @@
 <template>
-    <div class="flex items-center flex-col">
-        <img id="preview-image" class="w-screen h-screen" v-show="showPreview"/>
+    <div class="fixed pr-5 pt-5 w-full flex justify-end" @click="emit('close-event', true)">
+        <FeatherIcon name="x" class=" text-white size-8" />
+    </div>
+    <div v-show="showPreview" class="flex justify-center items-center h-screen bg-black">
+        <img id="preview-image"/>
     </div>
     <div v-if="!showPreview">
-        <!-- <div class="flex justify-center"> -->
-            <video ref="video" autoplay muted hidden playsinline webkit-playsinline></video>
-            <canvas ref="canvas" class="w-screen h-screen"></canvas>
-        <!-- </div> -->
+        <video ref="video" autoplay muted hidden playsinline webkit-playsinline></video>
+        <div class="flex justify-center items-center h-screen bg-black">
+            <canvas ref="canvas" :width="width"></canvas>
+        </div>
         <div class="fixed bottom-12 w-full flex items-center justify-between pl-10 pr-10">
             <div>
                 <button @click="swapCamera">
@@ -29,6 +32,7 @@
 </template>
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { FeatherIcon } from "frappe-ui";
 import SwapIcon from '../pages/icons/SwapIcon.vue';
 import CameraIcon from '../pages/icons/CameraIcon.vue';
 import PrimaryButton from './PrimaryButton.vue';
@@ -42,9 +46,13 @@ const video = ref(null)
 const canvas = ref(null)
 const ctx = ref(null)
 
+const width = ref(window.innerWidth);
+
 const constraints = ref({
     video : {
-        facingMode : "environment"
+        facingMode : "environment",
+        width: { ideal: 4096 },
+        height: { ideal: 2160 } 
     },
     audio : false
 })
@@ -67,7 +75,7 @@ onBeforeUnmount(() => {
 })
 
 function Draw() {
-    ctx.value.drawImage(video.value, 0, 0,window.innerWidth,window.innerHeight)
+    ctx.value.drawImage(video.value, 0, 0,canvas.value.width,video.value.videoHeight / (video.value.videoWidth / canvas.value.width))
     requestAnimationFrame(Draw)
 }
 
@@ -121,6 +129,3 @@ function getCamera() {
 }
 
 </script>
-<style scoped>
-
-</style>
