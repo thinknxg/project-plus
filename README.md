@@ -1,8 +1,8 @@
-## ProjectIT :
+## Project Plus :
 
-ProjectIT is an Open Source PWA mobile app to track the Employees out in the field. This mobile app is developed on Frappe Framework and it is integrated with the Project functionalities of ERPNext and integrated tightly with Frappe HR.
+ProjectPlus is an Open Source PWA mobile app to track the Employees out in the field. This mobile app is developed on Frappe Framework and it is integrated with the Project functionalities of ERPNext and integrated tightly with Frappe HR.
 
-### Features of the ProjectIT Mobile app
+### Features of the ProjectPlus
 
 * Easy Check In & Check out of Jobs (Projects) with Photo
 * Detailed GPS Tracking - Check In and Check Out
@@ -14,7 +14,7 @@ ProjectIT is an Open Source PWA mobile app to track the Employees out in the fie
 * Send Instructions to the Employees
 * Recording of the Project timesheet with the breakup of Regular hours and Overtime hours automatically
 
-### Some of the business that could be benefited from ProjectIT Mobile app
+### Some of the business that could be benefited from ProjectPlus 
 
 * Construction business
 * Architectural product installation business
@@ -28,21 +28,21 @@ GPL-3.0
 
 ### Prerequisites 
 
-ERPNext app and Frappe HR app are mandatory for ProjectIT PWA mobile app to install.
+thinkNXG ERPNext app and thinkNXG HR app are mandatory for ProjectPlus PWA mobile app to install.
 
 ## Installation Instructions :
 
 Download the App using the Bench CLI
 
-> bench get-app https://github.com/Arus-Info/ProjectIT.git
+> bench get-app https://github.com/thinknxg/ProjectPlus.git
 
 Install the App on your site
 
-> bench --site [site name] install-app projectit
+> bench --site [site name] install-app projectlog
 
 To install the app on your phones, go to
 
-https://your-site-url/projectit
+https://your-site-url/projectlog
 
 eg: if the site is https://example.com, the ProjectIT mobile app can be installed from https://example.com/projectit
 

@@ -1,8 +1,8 @@
 app_name = "projectit"
-app_title = "Projectit"
+app_title = "Project Plus"
 app_publisher = "frappe.dev@arus.co.in"
 app_description = "Project Cost Tracking Tool"
-app_email = "frappe.dev@arus.co.in"
+app_email = " Sales@kreatao.com"
 app_license = "gpl-3.0"
 required_apps = ["frappe","erpnext","hrms"]
 
